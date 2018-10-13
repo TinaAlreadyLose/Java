@@ -1,3 +1,6 @@
+/**
+ * @author Dan
+ */
 package com.my.draw;
 
 import javax.swing.JFrame;
@@ -25,6 +28,7 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
     int y=-1;
     private  int width=570;
     private  int height=390;
+
     boolean rubber=false;/*橡皮识别变量*/
     private JToolBar toolBar;//工具栏
     private JButton eraserButton;
@@ -40,6 +44,23 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
     Shapes shape;
     private JButton saveButton;/**保存按钮*/
 
+    /**
+     *  添加工具栏       | add toolbar
+     * @auther Dan
+     * 不同             |   different：
+     * 不能调用 add方法  | can“t use the method of add
+     * 使用setMenuBar（）|use method of setMenuBar()
+     */
+    private  JMenuItem strokeMenuItem1;     //细线菜单    |     thin line menu
+    private  JMenuItem strokeMenuItem2;  //粗线菜单    |     thick line menu
+    private JMenuItem strokeMenuItem3;   //较粗菜单    |     thicker line menu
+    private JMenuItem clearMenuItem;        //清除菜单
+    private JMenuItem foregroundMenuItem;   //前景色菜单
+    private JMenuItem backgroundMenuItem;   //背景色菜单
+    private JMenuItem eraserMenuItem;       //橡皮菜单
+    private JMenuItem exitMenuItem;         //退出菜单
+    private JMenuItem saveMenuItem;             //退出菜单
+
     public void getShape(Shapes shape) {
         this.shape=shape;
         drawShape=true;
@@ -54,6 +75,7 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
     }// end
 
     private void init(){
+
         graphics2D.setColor(backgroudColor);/*背景色*/
         graphics2D.fillRect(0,0,width,height);
         graphics2D.setColor(foreColor);/*前景色*/
@@ -98,7 +120,48 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
         eraserButton = new JButton("橡皮");
         toolBar.add(eraserButton);
 
+        /**
+         * 初始化菜单按钮  |   Initialize menu button
+         * @author Dan
+         */
+        //创建菜单栏  |      create menu Bar
+        JMenuBar menuBar =new JMenuBar();
+        setJMenuBar(menuBar);
 
+
+        JMenu systemMenu =new JMenu("系统");
+        JMenu strokeMenu=new JMenu("线形");
+        JMenu colorMenu = new JMenu("颜色");
+        JMenu editMenu = new JMenu("编辑");
+
+
+
+        saveMenuItem = new JMenuItem("保存");
+        systemMenu.add(saveMenuItem);
+        exitMenuItem = new JMenuItem("退出");
+        systemMenu.add(exitMenuItem);
+
+        strokeMenuItem1=new JMenuItem("细线");
+        strokeMenu.add(strokeMenuItem1);
+        strokeMenuItem2 = new JMenuItem("粗线");
+        strokeMenu.add(strokeMenuItem2);
+        strokeMenuItem3 = new JMenuItem("较粗");
+        strokeMenu.add(strokeMenuItem3);
+
+        foregroundMenuItem =new JMenuItem("前景颜色");
+        colorMenu.add(foregroundMenuItem);
+        backgroundMenuItem = new JMenuItem("背景颜色");
+        colorMenu.add(backgroundMenuItem);
+
+        clearMenuItem = new JMenuItem("清除");
+        editMenu.add(clearMenuItem);
+        eraserMenuItem = new JMenuItem("橡皮");
+        editMenu.add(eraserMenuItem);
+
+        menuBar.add(systemMenu);
+        menuBar.add(strokeMenu);
+        menuBar.add(colorMenu );
+        menuBar.add(editMenu);
 
 }
     private void addListener(){
@@ -236,9 +299,11 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
                 if (eraserButton.getText().equals("橡皮")) {
                     rubber=true;
                     eraserButton.setText("画图");
+                    eraserMenuItem.setText("画图");
                 }else{
                     rubber=false;
                     eraserButton.setText("橡皮");
+                    eraserMenuItem.setText("橡皮");
                     graphics2D.setColor(foreColor);
                 }
             }
@@ -269,8 +334,100 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
                 DrawImageUtil.saveImage(DrawPictureFrame.this,image);//打印图片
             }
         });
-    }
 
+        /**
+         * @author Dan
+         * 实现菜单栏功能监听事件      | achieve tool bar
+         */
+        exitMenuItem.addActionListener(new ActionListener() {   //退出    |   exit
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        eraserMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (eraserMenuItem.getText().equals("橡皮")) {
+                    rubber=true;
+                    eraserMenuItem.setText("画图");
+                    eraserButton.setText("画图");
+                }else{
+                    rubber=false;
+                    eraserMenuItem.setText("橡皮");
+                    eraserButton.setText("橡皮");
+                }
+            }
+        });
+        clearMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final  ActionEvent e) {
+                graphics2D.setColor(backgroudColor);
+                graphics2D.fillRect(0, 0, width, height);
+                graphics2D.setColor(foreColor);
+                canvas.repaint();
+            }
+        });
+
+        strokeMenuItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BasicStroke basicStroke = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER);
+                graphics2D.setStroke(basicStroke);
+                strokeMenuItem1.setSelected(true);
+            }
+        });
+        strokeMenuItem2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BasicStroke basicStroke = new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER);
+                graphics2D.setStroke(basicStroke);
+                strokeMenuItem2.setSelected(true);
+            }
+        });
+        strokeMenuItem3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BasicStroke basicStroke =new BasicStroke(3,BasicStroke.CAP_BUTT,BasicStroke.CAP_BUTT);
+                graphics2D.setStroke(basicStroke);
+                strokeMenuItem2.setSelected(true);
+            }
+        });
+
+
+
+        foregroundMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Color color = JColorChooser.showDialog(DrawPictureFrame.this, "选择颜色对话框", Color.CYAN);
+                if (color != null) {
+                    foreColor=color;
+                }
+                foreGroundButton.setForeground(foreColor);
+                graphics2D.setColor(foreColor);
+            }
+        });
+        backgroundMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Color color = JColorChooser.showDialog(DrawPictureFrame.this, "选择颜色对话框", Color.CYAN);
+                if (color != null) {
+                    backgroudColor=color;
+                }
+                backGroundButton.setForeground(backgroudColor); 
+                graphics2D.setColor(backgroudColor);
+                graphics2D.fillRect(0, 0, width, height);
+                graphics2D.setColor(foreColor);
+                canvas.repaint();
+            }
+        });
+        saveMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DrawImageUtil.saveImage(DrawPictureFrame.this,image);
+            }
+        });
+    }
 
     public static void main(String[] args) {
 
