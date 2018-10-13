@@ -2,20 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d27299a-27f8-46db-9070-209bf5c3a40d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/DrawUtil_mr.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/DrawUtil.mr.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/一起来画画/com/my/draw/DrawPictureCanvas.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/一起来画画/com/my/draw/DrawPictureFrame$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/一起来画画/com/my/draw/DrawPictureFrame$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/一起来画画/com/my/draw/DrawPictureFrame.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/my/draw/DrawPictureCanvas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/my/draw/DrawPictureFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/一起来画画.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../IDEAWorkSpac/.idea/libraries/DrawUtil_mr.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../IDEAWorkSpac/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../IDEAWorkSpac/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../IDEAWorkSpac/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../IDEAWorkSpac/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../IDEAWorkSpac/lib/DrawUtil.mr.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../IDEAWorkSpac/src/com/my/draw/DrawPictureCanvas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../IDEAWorkSpac/src/com/my/draw/DrawPictureFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../IDEAWorkSpac/一起来画画.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/一起来画画/com/my/draw/DrawPictureFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/一起来画画/com/my/draw/DrawPictureFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/一起来画画/com/my/draw/DrawPictureFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/一起来画画/com/my/draw/DrawPictureFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/一起来画画/com/my/draw/DrawPictureFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/一起来画画/com/my/draw/DrawPictureFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../JDBCLearning/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JDBCLearning/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../JDBCLearning/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JDBCLearning/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -60,20 +59,31 @@
     <session id="1279724654">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="644" />
+          <entry key="java" value="2891" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="644" />
+          <entry key="JAVA" value="2891" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -83,15 +93,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/my/draw/DrawPictureFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="41" column="58" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
+            <state relative-caret-position="-2280">
+              <caret line="55" column="38" lean-forward="true" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1308#1908#0" expanded="true" />
-                <element signature="e#1907#1908#0" expanded="true" />
-                <element signature="e#1943#2150#0" expanded="true" />
-                <element signature="e#2149#2150#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://F:/ToolForApps/JDK8/src.zip!/java/awt/event/ActionListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -151,6 +166,17 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="一起来画画" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="一起来画画" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -169,21 +195,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="draw" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="一起来画画" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="一起来画画" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="一起来画画" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -193,7 +204,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539402053665" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539413535968" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -251,18 +262,19 @@
       <workItem from="1539265599088" duration="2124000" />
       <workItem from="1539332128722" duration="2995000" />
       <workItem from="1539399546167" duration="7000" />
-      <workItem from="1539399583609" duration="2458000" />
+      <workItem from="1539399583609" duration="5312000" />
+      <workItem from="1539408014523" duration="5034000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7584000" />
+    <option name="totallyTimeSpent" value="15472000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16756032" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16957104" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -312,16 +324,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://F:/ToolForApps/JDK8/src.zip!/java/awt/event/ActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/my/draw/DrawPictureFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="41" column="58" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
+        <state relative-caret-position="-2280">
+          <caret line="55" column="38" lean-forward="true" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1308#1908#0" expanded="true" />
-            <element signature="e#1907#1908#0" expanded="true" />
-            <element signature="e#1943#2150#0" expanded="true" />
-            <element signature="e#2149#2150#0" expanded="true" />
           </folding>
         </state>
       </provider>
