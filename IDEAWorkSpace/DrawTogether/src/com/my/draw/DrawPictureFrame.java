@@ -188,6 +188,24 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
                 y=e.getY();
                 canvas.repaint();/*跟新画布*/
             }
+
+            public void mouseMoved(final MouseEvent e) {
+                if (rubber) {//使用橡皮擦        |       use erase
+                    Toolkit toolkit =Toolkit.getDefaultToolkit();//获取系统默认的组建安装包
+                    Image image = toolkit.createImage("src/img/icon/鼠标橡皮.png");//获得工具包中的图片
+                    Cursor cursor = toolkit.createCustomCursor(image, new Point(0, 0), "clear");//参数作为图片，光标热点，和贯标买哦书字符串
+                    setCursor(cursor);//使用自定义图片作为光标
+                }else{
+                    setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+                }
+            }
+        });
+        toolBar.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                super.mouseMoved(e);
+                setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
         });
         canvas.addMouseListener(new MouseAdapter() {/*添加鼠标但是事件监听*/
             @Override
