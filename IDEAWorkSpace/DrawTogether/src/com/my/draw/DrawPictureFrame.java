@@ -2,15 +2,18 @@ package com.my.draw;
 
 import javax.swing.JFrame;
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import java.awt.event.*;
 
 import javax.swing.*;
+import com.mr.util.*;
 /**
  * 构造方法
  */
-public class DrawPictureFrame extends JFrame {// 继承窗体类
+public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承窗体类
 //    创建一个8位的BGR颜色分量的图像
     BufferedImage image =new BufferedImage(570,390,BufferedImage.TYPE_INT_BGR);
     Graphics graphics=image.getGraphics();//获得图像的绘图对象
@@ -31,8 +34,16 @@ public class DrawPictureFrame extends JFrame {// 继承窗体类
     private JButton backGroundButton;/**背景颜色按钮*/
     private JButton foreGroundButton;/**前景颜色按钮*/
     private JButton clearButton;/**清除按钮*/
-    private JButton savaButton;/**保存按钮*/
+
     private JButton shapeButton;/**图像按钮*/
+    boolean drawShape =false;
+    Shapes shape;
+    private JButton saveButton;/**保存按钮*/
+
+    public void getShape(Shapes shape) {
+        this.shape=shape;
+        drawShape=true;
+    }
     public DrawPictureFrame() {
         setResizable(false);// 设置窗体大小不可被改变
         setTitle("画图。程序");// 设置标题
@@ -51,8 +62,8 @@ public class DrawPictureFrame extends JFrame {// 继承窗体类
 
         toolBar =new JToolBar();/**初始化工具栏*/
         getContentPane().add(toolBar,BorderLayout.NORTH);/**把工具栏放在最北边*/
-        savaButton =new JButton("保存");
-        toolBar.add(savaButton);/**工具栏添加保存按钮*/
+        saveButton =new JButton("保存");
+        toolBar.add(saveButton);/**工具栏添加保存按钮*/
         toolBar.addSeparator();//添加分割线
 
         strokeButton1 = new JToggleButton("细线");
@@ -78,6 +89,9 @@ public class DrawPictureFrame extends JFrame {// 继承窗体类
         foreGroundButton = new JButton("前景色");
         toolBar.add(foreGroundButton);
         toolBar.addSeparator();
+
+        shapeButton = new JButton("图像");
+        toolBar.add(shapeButton);
 
         clearButton = new JButton("清除");
         toolBar.add(clearButton);
@@ -110,7 +124,30 @@ public class DrawPictureFrame extends JFrame {// 继承窗体类
                 x=-1;
                 y=-1;/*上次记录的横纵坐标回复成-1*/
             }
+            public void mousePressed(MouseEvent e){
+                if (drawShape) {//花的是图像
+                    switch (shape.getType()) {
+                        case  Shapes.YUAN:
+//                            计算坐标，让鼠标处于圆的最中心
+                            int yuanX =e.getX()-shape.getWidth()/2;
+                            int yuanY=e.getY()-shape.getWidth()/2;
+                            //创建圆形并指定宽高
+                            Ellipse2D yuan=new Ellipse2D.Double(yuanX,yuanY,shape.getWidth(),shape.getHeigth());
+                            graphics2D.draw(yuan);
+                            break;
+                        case Shapes.FANG:
+                            int fangX=e.getX()-shape.getWidth()/2;
+                            int fangY=e.getY()-shape.getHeigth()/2;
+                            Rectangle2D fang = new Rectangle2D.Double(fangX, fangY, shape.getWidth(), shape.getHeigth());
+                            graphics2D.draw(fang);
+                            break;
+                    }
+                    canvas.repaint();/*更新画布*/
+                    drawShape=false;
+                }
+            }
         });
+
         /**
          * BasicStroke（）
          * BasicStroke（float width）
@@ -204,6 +241,32 @@ public class DrawPictureFrame extends JFrame {// 继承窗体类
                     eraserButton.setText("橡皮");
                     graphics2D.setColor(foreColor);
                 }
+            }
+        });
+
+        //图形按钮添加动作监听--选择圆形，方形，以及大小
+        shapeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ShapeWindow shapeWindow = new ShapeWindow(DrawPictureFrame.this);
+                int shapeButtonWidth = shapeButton.getWidth();//获取图像按钮的宽度
+                int shapeWindowWidth =shapeWindow.getWidth();//获取图形按钮的宽容
+                int shapeButtonX=shapeButton.getX();//获取图像按钮的横纵坐标
+                int shapeButtonY=shapeButton.getY();
+//                让自定义组件与“图像”居中对齐
+                int shapeWindowX=getX()+shapeButtonX-(shapeWindowWidth-shapeButtonWidth)/2;
+                //让图像组件显示在下方
+                int shapeWindowY=getY()+shapeButtonY+80;
+                shapeWindow.setLocation(shapeWindowX,shapeWindowY);
+                shapeWindow.setVisible(true);
+            }
+        });
+
+        //保存功能
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                DrawImageUtil.saveImage(DrawPictureFrame.this,image);//打印图片
             }
         });
     }
