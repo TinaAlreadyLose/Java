@@ -52,22 +52,28 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
      * 使用setMenuBar（）|use method of setMenuBar()
      */
     private  JMenuItem strokeMenuItem1;     //细线菜单    |     thin line menu
-    private  JMenuItem strokeMenuItem2;  //粗线菜单    |     thick line menu
-    private JMenuItem strokeMenuItem3;   //较粗菜单    |     thicker line menu
+    private  JMenuItem strokeMenuItem2;     //粗线菜单    |     thick line menu
+    private JMenuItem strokeMenuItem3;      //较粗菜单    |     thicker line menu
     private JMenuItem clearMenuItem;        //清除菜单
     private JMenuItem foregroundMenuItem;   //前景色菜单
     private JMenuItem backgroundMenuItem;   //背景色菜单
     private JMenuItem eraserMenuItem;       //橡皮菜单
     private JMenuItem exitMenuItem;         //退出菜单
-    private JMenuItem saveMenuItem;             //退出菜单
+    private JMenuItem saveMenuItem;         //退出菜单
+    private  JMenuItem shuiyinMenuItem;     //水印菜单    |     watermark menu
+    private  String shuiyin="";                //水印参数    |     watermark String
 
+    /**
+     * 用于获得图形空间返回的被选中的图形
+     * @param getshape
+     */
     public void getShape(Shapes shape) {
         this.shape=shape;
         drawShape=true;
     }
     public DrawPictureFrame() {
         setResizable(false);// 设置窗体大小不可被改变
-        setTitle("画图。程序");// 设置标题
+        setTitle("画图程序(水印内容：["+shuiyin+"])");// 设置标题
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// 窗口关闭停止工作
         setBounds(500, 100, 574, 460);
         init();/*初始化组件*/
@@ -135,11 +141,13 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
         JMenu editMenu = new JMenu("编辑");
 
 
-
+        shuiyinMenuItem=new JMenuItem("水印");
+        systemMenu.add(shuiyinMenuItem);
         saveMenuItem = new JMenuItem("保存");
         systemMenu.add(saveMenuItem);
         exitMenuItem = new JMenuItem("退出");
         systemMenu.add(exitMenuItem);
+
 
         strokeMenuItem1=new JMenuItem("细线");
         strokeMenu.add(strokeMenuItem1);
@@ -331,6 +339,7 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
+                addWatermark(); //添加水印      |      add watermark
                 DrawImageUtil.saveImage(DrawPictureFrame.this,image);//打印图片
             }
         });
@@ -414,7 +423,7 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
                 if (color != null) {
                     backgroudColor=color;
                 }
-                backGroundButton.setForeground(backgroudColor); 
+                backGroundButton.setForeground(backgroudColor);
                 graphics2D.setColor(backgroudColor);
                 graphics2D.fillRect(0, 0, width, height);
                 graphics2D.setColor(foreColor);
@@ -424,11 +433,42 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
         saveMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                addWatermark();     //添加水印
                 DrawImageUtil.saveImage(DrawPictureFrame.this,image);
             }
         });
+        shuiyinMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                shuiyin = JOptionPane.showInputDialog(DrawPictureFrame.this, "你想添加什么水印？");
+                if (null== shuiyin) {
+                    shuiyin = "";
+                }
+                else {
+                    setTitle("画图程序(水印内容：["+shuiyin+"])"); //修改窗体    |   change windows with watermark
+                }
+            }
+
+
+        });
     }
 
+    private void addWatermark(){    //添加水印函数    |   the function of add watermark
+        if (!"".equals(shuiyin.trim())) {        //水印不为空  exist of watermark
+            graphics2D.rotate(Math.toRadians(-30));//-30°
+            Font font = new Font("楷体", Font.BOLD, 36);//设置字体    |set font
+            graphics2D.setFont(font);//载入字体     |       add font
+            graphics2D.setColor(Color.GRAY);//使用灰色  |   use gray
+            AlphaComposite alphaComposite = AlphaComposite.SrcOver.derive(0.4f);//设置透明度     |    set transparency
+            graphics2D.setComposite(alphaComposite);//使用透明度     |       use transparency
+            graphics2D.drawString(shuiyin,150,500);//绘制水印  |      draw watermark
+            canvas.repaint();                               //重绘画板|     repaint
+            graphics2D.rotate(Math.toRadians(30));//把图片在旋转回来   |      make photo return
+            alphaComposite=AlphaComposite.SrcOver.derive(1f); //不再透明 |   stop transparency
+            graphics2D.setComposite(alphaComposite);//使用不透明效果   ||     use it
+            graphics2D.setColor(foreColor);// 回复画笔颜色              |     make painting brush return
+            }//stop
+    }
     public static void main(String[] args) {
 
         /**
