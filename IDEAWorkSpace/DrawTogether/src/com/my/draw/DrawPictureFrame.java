@@ -18,7 +18,9 @@ import com.mr.util.*;
  */
 public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承窗体类
 //    创建一个8位的BGR颜色分量的图像
-    BufferedImage image =new BufferedImage(570,390,BufferedImage.TYPE_INT_BGR);
+    private  int width=570;
+    private  int height=540;
+    BufferedImage image =new BufferedImage(width,height-60,BufferedImage.TYPE_INT_BGR);
     Graphics graphics=image.getGraphics();//获得图像的绘图对象
     Graphics2D graphics2D=(Graphics2D)graphics;/*讲绘图的对象转换为Graphics2D类型*/
     DrawPictureCanvas canvas = new DrawPictureCanvas();
@@ -26,8 +28,7 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
     Color backgroudColor=Color.white;/*定义背景色*/
     int x=-1; //定义上次鼠标的横纵点的横坐标
     int y=-1;
-    private  int width=570;
-    private  int height=390;
+
 
     boolean rubber=false;/*橡皮识别变量*/
     private JToolBar toolBar;//工具栏
@@ -44,6 +45,8 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
     Shapes shape;
     private JButton saveButton;/**保存按钮*/
 
+    private   PictureWindows pictureWindows; //画笔展开窗口
+    private  JButton showPictureWindows;    //展开画笔按钮
     /**
      *  添加工具栏       | add toolbar
      * @auther Dan
@@ -75,7 +78,7 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
         setResizable(false);// 设置窗体大小不可被改变
         setTitle("画图程序(水印内容：["+shuiyin+"])");// 设置标题
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// 窗口关闭停止工作
-        setBounds(500, 100, 574, 460);
+        setBounds(500, 100, width+10, height+60);
         init();/*初始化组件*/
         addListener();/*添加监听组件*/
     }// end
@@ -90,6 +93,8 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
 
         toolBar =new JToolBar();/**初始化工具栏*/
         getContentPane().add(toolBar,BorderLayout.NORTH);/**把工具栏放在最北边*/
+        showPictureWindows = new JButton("展开画笔");
+        toolBar.add(showPictureWindows);
         saveButton =new JButton("保存");
         toolBar.add(saveButton);/**工具栏添加保存按钮*/
         toolBar.addSeparator();//添加分割线
@@ -170,6 +175,8 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
         menuBar.add(strokeMenu);
         menuBar.add(colorMenu );
         menuBar.add(editMenu);
+
+        pictureWindows = new PictureWindows((DrawPictureFrame.this));//创建画笔面板,并当做他的父窗体
 
 }
     private void addListener(){
@@ -466,8 +473,23 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
                     setTitle("画图程序(水印内容：["+shuiyin+"])"); //修改窗体    |   change windows with watermark
                 }
             }
-
-
+        });
+        showPictureWindows.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean isVisible=pictureWindows.isVisible();//画板是否可见
+                if(isVisible){
+                    showPictureWindows.setText("展开画笔");//change it
+                    pictureWindows.setVisible(false);
+                }else{
+                    showPictureWindows.setText("隐藏窗体");
+                    //重新制定简笔展示窗体的显示位置
+                    //横坐标=主窗体坐标-简笔画窗体宽度-5
+                    //纵坐标=主窗体坐标
+                    pictureWindows.setLocation(getX()-pictureWindows.getWidth()-2,getY());
+                    pictureWindows.setVisible(true);
+                }
+            }
         });
     }
 
@@ -486,6 +508,10 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
             graphics2D.setComposite(alphaComposite);//使用不透明效果   ||     use it
             graphics2D.setColor(foreColor);// 回复画笔颜色              |     make painting brush return
             }//stop
+    }
+
+    public void initShowPictureButton() {
+        showPictureWindows.setText("展开画笔");
     }
     public static void main(String[] args) {
 
