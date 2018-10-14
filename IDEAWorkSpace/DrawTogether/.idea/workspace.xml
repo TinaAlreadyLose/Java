@@ -11,7 +11,6 @@
       <change beforePath="$PROJECT_DIR$/../../IDEAWorkSpac/src/com/my/draw/DrawPictureCanvas.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../IDEAWorkSpac/src/com/my/draw/DrawPictureFrame.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../IDEAWorkSpac/一起来画画.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../JDBCLearning/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JDBCLearning/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../JDBCLearning/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JDBCLearning/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -80,12 +79,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="10023" />
+          <entry key="java" value="11342" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="10023" />
+          <entry key="JAVA" value="11342" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -107,21 +106,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/my/draw/DrawPictureFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="488" column="81" selection-start-line="488" selection-start-column="81" selection-end-line="488" selection-end-column="81" />
+            <state relative-caret-position="153">
+              <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
+                <element signature="docComment;class#DrawPictureFrame#0" />
+                <element signature="docComment;field#strokeMenuItem1#0;class#DrawPictureFrame#0" />
+                <element signature="docComment;method#getShape#0;class#DrawPictureFrame#0" />
+                <element signature="method#getShape#0;class#DrawPictureFrame#0" />
                 <element signature="class#5721:6919" />
                 <element signature="method#mouseDragged#0;class#5721:6919" />
                 <element signature="method#mouseMoved#0;class#5721:6919" />
                 <element signature="e#6961#7199#0" expanded="true" />
                 <element signature="e#7198#7199#0" expanded="true" />
                 <element signature="method#actionPerformed#0;class#9589:9875" />
-                <element signature="e#19819#19820#0" expanded="true" />
-                <element signature="e#19852#19853#0" expanded="true" />
                 <element signature="method#main#0;class#DrawPictureFrame#0" />
-                <marker date="1539478625055" expanded="false" signature="18749:19781" ph="{...}" />
+                <marker date="1539483540720" expanded="false" signature="21613:22645" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -168,6 +169,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>save</find>
+      <find>eraserM</find>
+      <find>foregroundButton.set</find>
+      <find>eraser</find>
     </findStrings>
     <dirStrings>
       <dir>E:\GitToGitHub\JavaWorkSpace\IDEAWorkSpace\DrawTogether\src\img\picture</dir>
@@ -245,6 +249,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="一起来画画" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DrawTogether" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="icon" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -254,7 +265,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539478629950" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539483552771" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -314,12 +325,12 @@
       <workItem from="1539399546167" duration="7000" />
       <workItem from="1539399583609" duration="5312000" />
       <workItem from="1539408014523" duration="24594000" />
-      <workItem from="1539472663672" duration="5955000" />
+      <workItem from="1539472663672" duration="10058000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40987000" />
+    <option name="totallyTimeSpent" value="45090000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -396,15 +407,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/my/draw/DrawPictureFrame.java</url>
-          <line>274</line>
+          <line>306</line>
           <properties />
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/my/draw/DrawPictureFrame.java</url>
-          <line>106</line>
-          <properties />
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -447,21 +452,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/my/draw/DrawPictureFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="488" column="81" selection-start-line="488" selection-start-column="81" selection-end-line="488" selection-end-column="81" />
+        <state relative-caret-position="153">
+          <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="docComment;class#DrawPictureFrame#0" />
+            <element signature="docComment;field#strokeMenuItem1#0;class#DrawPictureFrame#0" />
+            <element signature="docComment;method#getShape#0;class#DrawPictureFrame#0" />
+            <element signature="method#getShape#0;class#DrawPictureFrame#0" />
             <element signature="class#5721:6919" />
             <element signature="method#mouseDragged#0;class#5721:6919" />
             <element signature="method#mouseMoved#0;class#5721:6919" />
             <element signature="e#6961#7199#0" expanded="true" />
             <element signature="e#7198#7199#0" expanded="true" />
             <element signature="method#actionPerformed#0;class#9589:9875" />
-            <element signature="e#19819#19820#0" expanded="true" />
-            <element signature="e#19852#19853#0" expanded="true" />
             <element signature="method#main#0;class#DrawPictureFrame#0" />
-            <marker date="1539478625055" expanded="false" signature="18749:19781" ph="{...}" />
+            <marker date="1539483540720" expanded="false" signature="21613:22645" ph="{...}" />
           </folding>
         </state>
       </provider>

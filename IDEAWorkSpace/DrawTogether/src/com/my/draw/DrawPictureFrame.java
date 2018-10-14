@@ -93,20 +93,36 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
 
         toolBar =new JToolBar();/**初始化工具栏*/
         getContentPane().add(toolBar,BorderLayout.NORTH);/**把工具栏放在最北边*/
-        showPictureWindows = new JButton("展开画笔");
+//        showPictureWindows = new JButton("展开画笔");
+        showPictureWindows = new JButton();
+        showPictureWindows.setToolTipText("展开画笔");
+        showPictureWindows.setIcon(new ImageIcon("src/img/icon/展开.png"));
         toolBar.add(showPictureWindows);
-        saveButton =new JButton("保存");
+
+//        saveButton =new JButton("保存");
+        saveButton = new JButton();
+        saveButton.setToolTipText("保存");
+        saveButton.setIcon(new ImageIcon("src/img/icon/保存.png"));
         toolBar.add(saveButton);/**工具栏添加保存按钮*/
         toolBar.addSeparator();//添加分割线
 
-        strokeButton1 = new JToggleButton("细线");
+//        strokeButton1 = new JToggleButton("细线");
+        strokeButton1 = new JToggleButton();
+        strokeButton1.setToolTipText("细线");
+        strokeButton1.setIcon(new ImageIcon("src/img/icon/1像素线条.png"));
         strokeButton1.setSelected(true);/*默认被选中*/
         toolBar.add(strokeButton1);
 
-        strokeButtom2 = new JToggleButton("粗线");
+//        strokeButtom2 = new JToggleButton("粗线");
+        strokeButtom2 = new JToggleButton();
+        strokeButtom2.setToolTipText("粗线");
+        strokeButtom2.setIcon(new ImageIcon("src/img/icon/2像素线条.png"));
         toolBar.add(strokeButtom2);
 
-        strokeButtom3 =new JToggleButton("较粗");
+//        strokeButtom3 =new JToggleButton("较粗");
+        strokeButtom3 = new JToggleButton();
+        strokeButtom3.setToolTipText("较粗");
+        strokeButtom3.setIcon(new ImageIcon("src/img/icon/4像素线条.png"));
         toolBar.add(strokeButtom3);
 
         ButtonGroup strokeGroup= new ButtonGroup();/*把三个按钮放在一个按钮组中，保证他们同时只能选择一个*/
@@ -116,19 +132,35 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
 
        toolBar.addSeparator();/*添加分割线*/
 
-        backGroundButton = new JButton("背景颜色");
+//        backGroundButton = new JButton("背景颜色");
+        backGroundButton = new JButton();
+        backGroundButton.setToolTipText("背景颜色");
+        backGroundButton.setIcon(new ImageIcon("src/img/icon/背景色.png"));
         toolBar.add(backGroundButton);
 
-        foreGroundButton = new JButton("前景色");
+//        foreGroundButton = new JButton("前景色");
+        foreGroundButton = new JButton();
+        foreGroundButton.setToolTipText("前景色");
+        foreGroundButton.setIcon(new ImageIcon("src/img/icon/前景色.png"));
         toolBar.add(foreGroundButton);
         toolBar.addSeparator();
 
-        shapeButton = new JButton("图像");
+//        shapeButton = new JButton("图形");
+        shapeButton = new JButton();
+        shapeButton.setToolTipText("图形");
+        shapeButton.setIcon(new ImageIcon("src/img/icon/形状.png"));
         toolBar.add(shapeButton);
 
-        clearButton = new JButton("清除");
+
+//        clearButton = new JButton("清除");
+        clearButton = new JButton();
+        clearButton.setToolTipText("清除");
+        clearButton.setIcon(new ImageIcon("src/img/icon/清除.png"));
         toolBar.add(clearButton);
-        eraserButton = new JButton("橡皮");
+//        eraserButton = new JButton("橡皮");
+        eraserButton = new JButton();
+        eraserButton.setToolTipText("橡皮");
+        eraserButton.setIcon(new ImageIcon("src/img/icon/橡皮.png"));
         toolBar.add(eraserButton);
 
         /**
@@ -305,7 +337,7 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
                 if (fColor != null) {
                     foreColor=fColor;
                 }
-                foreGroundButton.setForeground(foreColor);
+                foreGroundButton.setBackground(foreColor);
                 graphics2D.setColor(foreColor);
             }
         });
@@ -329,15 +361,28 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
         eraserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                if (eraserButton.getText().equals("橡皮")) {
-                    rubber=true;
-                    eraserButton.setText("画图");
-                    eraserMenuItem.setText("画图");
-                }else{
-                    rubber=false;
-                    eraserButton.setText("橡皮");
+//                if (eraserButton.getText().equals("橡皮")) {
+//                    rubber=true;
+//                    eraserButton.setText("画图");
+//                    eraserMenuItem.setText("画图");
+//                }else{
+//                    rubber=false;
+//                    eraserButton.setText("橡皮");
+//                    eraserMenuItem.setText("橡皮");
+//                    graphics2D.setColor(foreColor);
+//                }
+                if (rubber) {
+                    eraserButton.setToolTipText("橡皮");
+                    eraserButton.setIcon(new ImageIcon("src/img/icon/橡皮.png"));
                     eraserMenuItem.setText("橡皮");
                     graphics2D.setColor(foreColor);
+                    rubber=false;
+                }else{
+                    eraserMenuItem.setText("画图");
+                    eraserButton.setToolTipText("画图");
+                    eraserButton.setIcon(new ImageIcon("src/img/icon/画笔.png"));
+                    graphics2D.setColor(backgroudColor);
+                    rubber=true;
                 }
             }
         });
@@ -382,14 +427,21 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
         eraserMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (eraserMenuItem.getText().equals("橡皮")) {
-                    rubber=true;
-                    eraserMenuItem.setText("画图");
-                    eraserButton.setText("画图");
-                }else{
-                    rubber=false;
+//                if (eraserMenuItem.getText().equals("橡皮")) {
+//                    rubber=true;
+//                    eraserMenuItem.setText("画图");
+//                    eraserButton.setText("画图");
+//                }else{
+//                    rubber=false;
+//                    eraserMenuItem.setText("橡皮");
+//                    eraserButton.setText("橡皮");
+//                }
+                if (rubber) {
+                    eraserButton.setToolTipText("橡皮");
+                    eraserButton.setIcon(new ImageIcon("src/img/icon/橡皮.png"));
                     eraserMenuItem.setText("橡皮");
-                    eraserButton.setText("橡皮");
+                    graphics2D.setColor(foreColor);
+                    rubber=false;
                 }
             }
         });
@@ -437,7 +489,7 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
                 if (color != null) {
                     foreColor=color;
                 }
-                foreGroundButton.setForeground(foreColor);
+                foreGroundButton.setBackground(foreColor);
                 graphics2D.setColor(foreColor);
             }
         });
@@ -479,10 +531,14 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
             public void actionPerformed(ActionEvent e) {
                 boolean isVisible=pictureWindows.isVisible();//画板是否可见
                 if(isVisible){
-                    showPictureWindows.setText("展开画笔");//change it
+//                    showPictureWindows.setText("展开画笔");//change it
+                    showPictureWindows.setToolTipText("展开画笔");
+                    showPictureWindows.setIcon(new ImageIcon("src/img/icon/展开.png"));
                     pictureWindows.setVisible(false);
                 }else{
-                    showPictureWindows.setText("隐藏窗体");
+//                    showPictureWindows.setText("隐藏窗体");sh
+                    showPictureWindows.setToolTipText("隐藏简化笔");
+                    showPictureWindows.setIcon(new ImageIcon("src/img/icon/隐藏.png"));
                     //重新制定简笔展示窗体的显示位置
                     //横坐标=主窗体坐标-简笔画窗体宽度-5
                     //纵坐标=主窗体坐标
@@ -511,7 +567,9 @@ public class DrawPictureFrame extends JFrame implements FrameGetShape {// 继承
     }
 
     public void initShowPictureButton() {
-        showPictureWindows.setText("展开画笔");
+//        showPictureWindows.setText("展开画笔");
+        showPictureWindows.setToolTipText("展开画笔");
+        showPictureWindows.setIcon(new ImageIcon("src/img/icon/展开.png"));
     }
     public static void main(String[] args) {
 
