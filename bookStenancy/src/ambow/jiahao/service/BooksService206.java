@@ -50,6 +50,6 @@ public class BooksService {
     }
 
     public Book206 getBookByID(int bookID) {
-        return booksDao206.getb(bookID);
+        return booksDao206.getBookByID206(bookID);
     }
 }
